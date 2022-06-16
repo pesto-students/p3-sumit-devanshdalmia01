@@ -1,0 +1,105 @@
+body {
+	display: flex;
+	margin: 0;
+	font-family: "Lato", sans-serif;
+}
+nav {
+	width: 60px;
+}
+ul {
+	margin: 0px;
+	background-color: #d0d0d0;
+	padding-left: 0px;
+	list-style: none;
+	width: 60px;
+}
+.list-item {
+	padding-top: 55px;
+	text-align: center;
+}
+main {
+	width: 100%;
+	height: 100%;
+}
+.topsection {
+	display: flex;
+	background-color: #454545;
+}
+.playlistimage {
+	padding: 50px;
+}
+.toptextdiv h1 {
+	color: #ffffff;
+	padding-top: 30px;
+}
+.toptextdiv h4 {
+	color: #ffffff;
+	font-weight: 400;
+}
+.buttondiv {
+	padding-top: 65px;
+}
+.buttondiv span {
+	color: #ffffff;
+	font-size: 14px;
+	padding-right: 15px;
+}
+ol {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+ol > li {
+	padding: 15px;
+	padding-left: 25px;
+	padding-right: 0px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+ol > li > span {
+	width: 350px;
+}
+.syncbutton {
+	color: blue;
+	border: 2px solid #000000;
+	padding: 2px;
+	width: auto;
+}
+.bottomsection {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	left: 0px;
+	position: absolute;
+	display: flex;
+	bottom: 0px;
+	background-color: #4b6797;
+	width: 100%;
+}
+.bottomsectionimage {
+	width: 150px;
+	height: 150px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.bottomtextdiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+}
+.bottomtextdiv > h4 {
+	width: 100%;
+	margin: 0px;
+	color: #ffffff;
+	font-weight: 400;
+}
+.bottombuttondiv {
+	color: #ffffff;
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding-right: 50px;
+}
