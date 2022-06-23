@@ -12,16 +12,16 @@ body {
 	justify-content: center;
 }
 .main:hover .sq1 {
-	animation: red 3s normal;
+	animation: red 2.5s normal;
 }
 .main:hover .sq2 {
-	animation: yellow 3s normal;
+	animation: yellow 2.5s normal;
 }
 .main:hover .sq3 {
-	animation: green 3s normal;
+	animation: green 2.5s normal;
 }
 .main:hover .sq4 {
-	animation: blue 3s normal;
+	animation: blue 2.5s normal;
 }
 @keyframes red {
 	0% {
