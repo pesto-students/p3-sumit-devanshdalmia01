@@ -53,8 +53,8 @@
 				</section>
 			</section>
 			<section>
-				<form action="" method="get">
-					<fieldset style="border: none">
+				<form action="" onsubmit="alert('Successfully Submitted')" method="post">
+					<fieldset style="border: none; padding: 0; margin: 0">
 						<legend style="display: none">Registration Details</legend>
 						<p>
 							<input type="radio" name="for_salutation" id="mr" />
@@ -64,34 +64,34 @@
 						</p>
 						<p>
 							<label for="name">Name</label>
-							<input type="text" name="" id="name" />
+							<input type="text" name="" required title="Please enter your name!" id="name" />
 						</p>
 						<p>
 							<label for="email">Email</label>
-							<input type="email" name="" id="email" />
+							<input type="email" name="" required title="Please enter your email!" id="email" />
 						</p>
 						<p>
 							<label for="mobileNumber">Mobile</label>
-							<input type="tel" name="" id="mobileNumber" />
+							<input type="text" pattern="[6789][0-9]{9}" maxlength="10" name="" required title="Please enter a valid phone number!" id="mobileNumber" />
 						</p>
 						<p>
 							<label for="pass">Password</label>
-							<input type="password" name="" id="pass" />
+							<input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" name="" required title="Please enter a strong password!" id="pass" />
 						</p>
 						<p>
 							<label for="country"></label>
-							<select name="" id="country">
-								<option value="India">India</option>
+							<select name="" required title="Please select a country!" id="country">
+								<option value="India" selected>India</option>
 								<option value="USA">USA</option>
 								<option value="UK">UK</option>
 							</select>
 						</p>
 						<p>
-							<input type="checkbox" name="" id="tnc" />
+							<input type="checkbox" name="" required title="Please check the field!" id="tnc" />
 							<label for="tnc">I accept the TnC</label>
 						</p>
 					</fieldset>
-					<button type="submit">Submit</button>
+					<button type="submit" style="margin: 0">Submit</button>
 				</form>
 			</section>
 		</main>
