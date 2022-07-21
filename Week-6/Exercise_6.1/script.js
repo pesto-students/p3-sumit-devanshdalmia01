@@ -1,38 +1,31 @@
 const maxSubArray = (nums) => {
 	// O(n[cube]) Solution
 	// let maxSum = Number.NEGATIVE_INFINITY;
-	// if (nums.length == 1)
-	// {
-	//     return nums[0];
+	// if (nums.length == 1) {
+	// 	return nums[0];
 	// }
-	// for (let i = 0; i < nums.length; i++)
-	// {
-	//     for (let j = i; j < nums.length; j++)
-	//     {
-	//         let sum = 0;
-	//         for (let k = i; k <= j; k++)
-	//         {
-	//             sum += nums[k];
-	//         }
-	//         maxSum = max(sum, maxSum);
-	//     }
+	// for (let i = 0; i < nums.length; i++) {
+	// 	for (let j = i; j < nums.length; j++) {
+	// 		let sum = 0;
+	// 		for (let k = i; k <= j; k++) {
+	// 			sum += nums[k];
+	// 		}
+	// 		maxSum = Math.max(sum, maxSum);
+	// 	}
 	// }
 	// return maxSum;
 
 	// O(n[square])
 	// let maxSum = Number.NEGATIVE_INFINITY;
-	// if (nums.length == 1)
-	// {
-	//     return nums[0];
+	// if (nums.length == 1) {
+	// 	return nums[0];
 	// }
-	// for (let i = 0; i < nums.length; i++)
-	// {
-	//     let sum = 0;
-	//     for (let j = i; j < nums.length; j++)
-	//     {
-	//         sum += nums[j];
-	//         maxSum = max(sum, maxSum);
-	//     }
+	// for (let i = 0; i < nums.length; i++) {
+	// 	let sum = 0;
+	// 	for (let j = i; j < nums.length; j++) {
+	// 		sum += nums[j];
+	// 		maxSum = Math.max(sum, maxSum);
+	// 	}
 	// }
 	// return maxSum;
 
