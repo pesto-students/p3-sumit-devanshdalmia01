@@ -1,4 +1,5 @@
 const pairWithADifference = (nums, k) => {
+	// O(nlogn)
 	nums.sort((a, b) => a - b);
 	let i = 0,
 		j = 1;

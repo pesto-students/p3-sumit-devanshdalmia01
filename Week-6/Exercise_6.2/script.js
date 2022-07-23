@@ -1,3 +1,4 @@
+// O(n)
 const spiralOrder = (matrix) => {
 	let ans = [];
 	if (matrix[0].length == 1 && matrix.length == 1) {
