@@ -2,7 +2,7 @@ const maxProfit = (prices) => {
 	// Approach 1 O(n[square])
 	// let profit = 0;
 	// let maxProfit = 0;
-	// if (prices.length == 1)
+	// if (prices.length === 1)
 	// {
 	//     return 0;
 	// }
@@ -23,7 +23,7 @@ const maxProfit = (prices) => {
 	// Approach 2 O(n[sqaure])
 	// let profit = 0;
 	// let maxProfit = 0;
-	// if (prices.length == 1)
+	// if (prices.length === 1)
 	// {
 	//     return 0;
 	// }
@@ -43,10 +43,10 @@ const maxProfit = (prices) => {
 	// Approach 3 O(n)
 	let profit = 0;
 	let minima = Number.POSITIVE_INFINITY;
-	if (prices.length == 1) {
+	if (prices.length === 1) {
 		return 0;
 	}
-	if (prices.length == 2) {
+	if (prices.length === 2) {
 		return Math.max(prices[1] - prices[0], 0);
 	}
 	for (let i = 0; i < prices.length; i++) {

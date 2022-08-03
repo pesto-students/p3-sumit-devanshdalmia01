@@ -15,7 +15,7 @@ function reverse(head) {
 	return prev;
 }
 function printList(node) {
-	while (node != null) {
+	while (node !== null) {
 		console.log(node.data + " ");
 		node = node.next;
 	}

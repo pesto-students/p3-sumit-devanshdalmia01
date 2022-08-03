@@ -11,7 +11,7 @@ function rotate(head, k) {
 	if (!head || !head.next || k === 0) return head;
 	let len = 1;
 	let temp = head;
-	while (temp.next != null) {
+	while (temp.next !== null) {
 		len++;
 		temp = temp.next;
 		if (temp.next === null) {
@@ -33,7 +33,7 @@ function rotate(head, k) {
 	return head;
 }
 function printList(node) {
-	while (node != null) {
+	while (node !== null) {
 		console.log(node.data + " ");
 		node = node.next;
 	}
