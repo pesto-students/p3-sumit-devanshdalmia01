@@ -3,13 +3,13 @@ const sortColors = (num) => {
 	// let size = num.length;
 	// let arr = [[], [], []];
 	// for (let i = 0; i < size; i++) {
-	// 	if (num[i] == 0) {
+	// 	if (num[i] === 0) {
 	// 		arr[0].push(num[i]);
 	// 	}
-	// 	if (num[i] == 1) {
+	// 	if (num[i] === 1) {
 	// 		arr[1].push(num[i]);
 	// 	}
-	// 	if (num[i] == 2) {
+	// 	if (num[i] === 2) {
 	// 		arr[2].push(num[i]);
 	// 	}
 	// }
@@ -31,13 +31,13 @@ const sortColors = (num) => {
 	// 	k = 0,
 	// 	l = 0;
 	// for (let i = 0; i < size; i++) {
-	// 	if (num[i] == 0) {
+	// 	if (num[i] === 0) {
 	// 		j++;
 	// 	}
-	// 	if (num[i] == 1) {
+	// 	if (num[i] === 1) {
 	// 		k++;
 	// 	}
-	// 	if (num[i] == 2) {
+	// 	if (num[i] === 2) {
 	// 		l++;
 	// 	}
 	// }
