@@ -30,7 +30,7 @@ export default function Home() {
 			setTasks([...tasks]);
 			setDeleteId("");
 		}
-	}, [deleteId]);
+	}, [deleteId, tasks]);
 	useEffect(() => {
 		let index = tasks.findIndex((task) => task.id === taskStatus);
 		if (index > -1) {
@@ -38,24 +38,28 @@ export default function Home() {
 			setTasks([...tasks]);
 			setTaskStatus("");
 		}
-	}, [taskStatus]);
+	}, [taskStatus, tasks]);
 	return (
 		<>
 			<header className="header">
 				<img src={Logo} alt="App Logo" height={75} />
 			</header>
 			<main>
-				<section>
+				<section className="navbar">
 					<h1>
 						<time dateTime={date.toISOString()}>{date.toLocaleDateString("en-us", { weekday: "long", month: "long", day: "numeric" })}</time>
-						{!toggleView ? <p>{tasks.filter((task) => task.isActive === true).length} Active Task</p> : <p>{tasks.filter((task) => task.isActive === false).length} Completed Task</p>}
+						{!toggleView ? <p>{tasks.filter((task) => task.isActive === true).length} Active Tasks</p> : <p>{tasks.filter((task) => task.isActive === false).length} Completed Tasks</p>}
 					</h1>
 					<nav>
-						<button onClick={() => setToggleView(false)}>Incomplete Tasks</button>
-						<button onClick={() => setToggleView(true)}>Completed Tasks</button>
+						<button className={toggleView ? "switchTaskListButton" : "switchTaskListButton active"} onClick={() => setToggleView(false)}>
+							Incomplete Tasks
+						</button>
+						<button className={toggleView ? "switchTaskListButton active" : "switchTaskListButton"} onClick={() => setToggleView(true)}>
+							Completed Tasks
+						</button>
 					</nav>
 				</section>
-				<section>
+				<section className="inputfields">
 					<form>
 						<fieldset>
 							<legend className="invisible">ToDo</legend>
@@ -68,7 +72,7 @@ export default function Home() {
 					</form>
 				</section>
 				{!toggleView ? (
-					<section>
+					<section className="activetasks">
 						{tasks.filter((task) => task.isActive === true).length === 0 && tasks.filter((task) => task.isActive === false).length === 0 ? (
 							<h1>You currently have 0 tasks added. Add a task to get started!</h1>
 						) : tasks.filter((task) => task.isActive === true).length === 0 ? (
@@ -84,7 +88,7 @@ export default function Home() {
 						)}
 					</section>
 				) : (
-					<section>
+					<section className="completedtasks">
 						{tasks.filter((task) => task.isActive === true).length === 0 && tasks.filter((task) => task.isActive === false).length === 0 ? (
 							<h1>You currently have 0 tasks added. Add a task to get started!</h1>
 						) : tasks.filter((task) => task.isActive === false).length === 0 ? (
