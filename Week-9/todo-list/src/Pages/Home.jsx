@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "../Assets/logo.svg";
 import { v4 as uuidv4 } from "uuid";
 import "./Home.css";
 import ToDoListItem from "../Components/ToDoListItem";
-import { useEffect } from "react";
 
 export default function Home() {
 	const [toggleView, setToggleView] = useState(false);
