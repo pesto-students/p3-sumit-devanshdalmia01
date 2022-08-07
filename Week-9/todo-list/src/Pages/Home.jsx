@@ -2,11 +2,16 @@ import { useState } from "react";
 import Logo from "../Assets/logo.svg";
 import { v4 as uuidv4 } from "uuid";
 import "./Home.css";
+import ToDoListItem from "../Components/ToDoListItem";
+import { useEffect } from "react";
+
 export default function Home() {
 	const [toggleView, setToggleView] = useState(false);
 	const [toDoText, setToDoText] = useState("");
+	const [deleteId, setDeleteId] = useState("");
+	const [taskStatus, setTaskStatus] = useState("");
 	const [date] = useState(new Date());
-	const [tasks] = useState([]);
+	const [tasks, setTasks] = useState([]);
 	const handleChange = (event) => {
 		setToDoText(event.target.value);
 	};
@@ -19,7 +24,22 @@ export default function Home() {
 			setToDoText("");
 		}
 	};
-	console.log(tasks);
+	useEffect(() => {
+		let index = tasks.findIndex((task) => task.id === deleteId);
+		if (index > -1) {
+			tasks.splice(index, 1);
+			setTasks([...tasks]);
+			setDeleteId("");
+		}
+	}, [deleteId]);
+	useEffect(() => {
+		let index = tasks.findIndex((task) => task.id === taskStatus);
+		if (index > -1) {
+			tasks[index].isActive = !tasks[index].isActive;
+			setTasks([...tasks]);
+			setTaskStatus("");
+		}
+	}, [taskStatus]);
 	return (
 		<>
 			<header className="header">
@@ -41,9 +61,9 @@ export default function Home() {
 						<fieldset>
 							<legend className="invisible">ToDo</legend>
 							<label htmlFor="todotext"></label>
-							<input type="text" name="todotext" id="todotext" value={toDoText} onChange={handleChange} />
+							<input type="text" id="todotext" value={toDoText} onChange={handleChange} />
 							<button type="submit" onClick={addToDo}>
-								Add ToDo
+								Add Task
 							</button>
 						</fieldset>
 					</form>
@@ -55,13 +75,13 @@ export default function Home() {
 						) : tasks.filter((task) => task.isActive === true).length === 0 ? (
 							<h1>You currently have 0 active tasks. Add a task now!</h1>
 						) : (
-							<ol>
+							<ul>
 								{tasks
 									.filter((task) => task.isActive === true)
 									.map((task, index) => {
-										return <li key={index}>{task.text}</li>;
+										return <ToDoListItem key={index} task={task} setDeleteId={setDeleteId} setTaskStatus={setTaskStatus} />;
 									})}
-							</ol>
+							</ul>
 						)}
 					</section>
 				) : (
@@ -71,13 +91,13 @@ export default function Home() {
 						) : tasks.filter((task) => task.isActive === false).length === 0 ? (
 							<h1>You currently have 0 completed tasks. Complete a task now!</h1>
 						) : (
-							<ol>
+							<ul>
 								{tasks
 									.filter((task) => task.isActive === false)
 									.map((task, index) => {
-										return <li key={index}>{task.text}</li>;
+										return <ToDoListItem key={index} task={task} setDeleteId={setDeleteId} setTaskStatus={setTaskStatus} />;
 									})}
-							</ol>
+							</ul>
 						)}
 					</section>
 				)}
