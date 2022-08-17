@@ -1,0 +1,9 @@
+Main Colors - 	Light Blue		- #2cbcb2
+				Light Orange	- #d44e28
+				Black			- #242021
+Cookie Policy Modal
+Loaders
+Toasts
+Favicon
+Logo
+Meta Image
