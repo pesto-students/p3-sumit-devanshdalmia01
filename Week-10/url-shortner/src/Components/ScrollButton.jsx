@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function ScrollButton() {
 	const [visible, setVisible] = useState(false);
@@ -25,13 +25,5 @@ export default function ScrollButton() {
 			mounted = false;
 		};
 	});
-	return (
-		<>
-			{visible && (
-				<button className="go-top rounded-circle" onClick={scrollToTop}>
-					<i className="fas fa-2x fa-rocket-launch" />
-				</button>
-			)}
-		</>
-	);
+	return visible && <button onClick={scrollToTop}>Scroll Up</button>;
 }
