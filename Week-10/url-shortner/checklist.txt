@@ -9,4 +9,105 @@ Logo
 Meta Image
 Copy Button
 
+api key - da937a939f0ec216ac336027756405ca5290e
+
+GET - https://cutt.ly/api/api.php?key=KEY&short=URL&name=CODE
+
+{
+    "url": {
+        "status": 7,
+        "fullLink": "https://javascript.plainenglish.io/how-to-synchronize-react-redux-with-local-storage-a2498564c295",
+        "date": "2022-08-18",
+        "shortLink": "https://cutt.ly/test3141",
+        "title": "How to Synchronize React-Redux with Local storage | by UmerFarooq | JavaScript in Plain English"
+    }
+}
+
+GET - https://cutt.ly/api/api.php?key=KEY&stats=shortURL
+
+{
+    "stats": {
+        "status": 1,
+        "clicks": 4,
+        "date": "2022-08-18",
+        "title": "How to Synchronize React-Redux with Local storage | by UmerFarooq | JavaScript in Plain English",
+        "fullLink": "https://javascript.plainenglish.io/how-to-synchronize-react-redux-with-local-storage-a2498564c295",
+        "shortLink": "cutt.ly/test3141",
+        "facebook": 0,
+        "twitter": 0,
+        "pinterest": 0,
+        "instagram": 0,
+        "googlePlus": 0,
+        "linkedin": 0,
+        "rest": 4,
+        "devices": {
+            "geo": {
+                "0": {
+                    "tag": "IN",
+                    "clicks": "4"
+                }
+            },
+            "dev": {
+                "0": {
+                    "tag": "Desktop",
+                    "clicks": "3"
+                },
+                "1": {
+                    "tag": "Mobile",
+                    "clicks": "1"
+                }
+            },
+            "sys": {
+                "0": {
+                    "tag": "Mac 10.15",
+                    "clicks": "3"
+                },
+                "1": {
+                    "tag": "Android 11",
+                    "clicks": "1"
+                }
+            },
+            "bro": {
+                "0": {
+                    "tag": "Safari 15.6",
+                    "clicks": "2"
+                },
+                "1": {
+                    "tag": "Chrome Mobile 104.0",
+                    "clicks": "1"
+                },
+                "2": {
+                    "tag": "Chrome 104.0",
+                    "clicks": "1"
+                }
+            },
+            "brand": {
+                "0": {
+                    "family": "Other",
+                    "tag": "Other",
+                    "clicks": "1"
+                },
+                "1": {
+                    "family": "Apple",
+                    "tag": "Other",
+                    "clicks": "3"
+                }
+            },
+            "lang": {
+                "0": {
+                    "tag": "EN",
+                    "clicks": "4"
+                }
+            }
+        },
+        "refs": {},
+        "bots": "Insufficient subscription level"
+    }
+}
+
+GET - http://api.qrserver.com/v1/create-qr-code/?data=shortURL&format=svg
+
+SVG File
+
+
 Remove className Regex - className="([^"]+)"
