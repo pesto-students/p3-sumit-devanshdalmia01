@@ -18,7 +18,7 @@ export default function ContactUs() {
 							</div>
 							<div>
 								<label>Mobile Number</label>
-								<input type="text" pattern="[6789][0-9]{9}" maxlength="10" placeholder="Mobile Number" required />
+								<input type="text" pattern="[6789][0-9]{9}" maxLength="10" placeholder="Mobile Number" required />
 							</div>
 							<div>
 								<label>Email</label>

@@ -146,6 +146,7 @@
 .fakediv .image-404 {
 	position: relative;
 	z-index: 100;
+	display: inline;
 	pointer-events: none;
 }
 .fakediv .stars {
