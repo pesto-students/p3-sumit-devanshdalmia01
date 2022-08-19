@@ -11,7 +11,9 @@ const dataSlice = createSlice({
 		deleteURL(state, action) {
 			delete state[action.payload];
 		},
-		updateURLStats(state, action) {},
+		updateURLStats(state, action) {
+			state[action.payload[0]]["stats"] = action.payload[1];
+		},
 	},
 });
 

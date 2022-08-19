@@ -1,13 +1,11 @@
 import Base from "../Base";
-import Hero from "../Components/Hero";
-import Features from "../Components/Features";
+import DisplayURLsInfo from "../Components/DisplayURLsInfo";
 
 export default function ShowInfo() {
 	return (
 		<Base>
 			<main>
-				<Hero />
-				<Features />
+				<DisplayURLsInfo />
 			</main>
 		</Base>
 	);

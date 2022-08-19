@@ -32,3 +32,16 @@ li .active {
 .colorBlue {
 	color: #2cbcb2;
 }
+table,
+th,
+td {
+	border: 2px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+th {
+	font-size: 18px;
+}
+td {
+	padding: 5px 12px 5px 12px;
+}
