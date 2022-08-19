@@ -1,8 +1,8 @@
-Main Colors - 	Light Blue		- #2cbcb2
-				Light Orange	- #d44e28
-				Black			- #242021
 Loaders
 Toasts
 Exception Handling
+Favicon
+Logo
+Meta Image
 
 Remove className Regex - className="([^"]+)"
