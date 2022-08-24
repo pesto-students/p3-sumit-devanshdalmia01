@@ -1,4 +1,4 @@
-import Tagline from "../Assets/Tagline.svg";
+import Tagline from "../Assets/TagLine.svg";
 import URLImage from "../Assets/URLImage.svg";
 
 export default function Hero() {
