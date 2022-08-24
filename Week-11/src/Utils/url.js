@@ -34,7 +34,7 @@ export const getShortURLStats = async (shortURL) => {
 };
 
 export const getQRCode = async (shortURL) => {
-	return await fetch(`http://api.qrserver.com/v1/create-qr-code/?data=${shortURL}&format=png`, {
+	return await fetch(`https://api.qrserver.com/v1/create-qr-code/?data=${shortURL}&format=png`, {
 		method: "GET",
 	})
 		.then((res) => {
