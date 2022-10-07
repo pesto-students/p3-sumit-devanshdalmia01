@@ -1,3 +1,7 @@
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
 const config = {
 	production: {
 		SECRET: process.env.SECRET,
@@ -5,7 +9,7 @@ const config = {
 	},
 	default: {
 		SECRET: "mysecretkey",
-		DATABASE: "mongodb+srv://devanshdalmia1:a3RyXUm8sLHWuLv7@database1.ltbhusr.mongodb.net/?retryWrites=true&w=majority",
+		DATABASE: process.env.MONOGODBURL,
 	},
 };
 
