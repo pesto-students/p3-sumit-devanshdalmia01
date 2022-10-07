@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 import crypto from "crypto";
 import Jwt from "jsonwebtoken";
-import { get } from "../config/config.js";
 import { v4 } from "uuid";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 const userSchema = mongoose.Schema({
 	userId: {
@@ -70,7 +72,7 @@ userSchema.methods.validPassword = function (password) {
 
 userSchema.methods.generateToken = function (cb) {
 	const user = this;
-	const token = Jwt.sign(user._id.toHexString(), get(process.env.NODE_ENV).SECRET);
+	const token = Jwt.sign(user._id.toHexString(), process.env.SECRET);
 	user.token = token;
 	user.save(function (err, user) {
 		if (err) return cb(err);
@@ -80,7 +82,7 @@ userSchema.methods.generateToken = function (cb) {
 
 userSchema.statics.findByToken = function (token, cb) {
 	const user = this;
-	Jwt.verify(token, get(process.env.NODE_ENV).SECRET, function (err, decode) {
+	Jwt.verify(token, process.env.SECRET, function (err, decode) {
 		user.findOne({ _id: decode, token: token }, function (err, user) {
 			if (err) return cb(err);
 			cb(null, user);

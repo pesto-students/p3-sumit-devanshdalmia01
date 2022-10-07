@@ -1,9 +1,10 @@
-import User from "../models/user";
+import User from "../models/user.js";
 
 const register = async (req, res) => {
 	const newuser = new User(req.body);
 	User.findOne({ email: newuser.email }, function (err, user) {
-		if (user) return res.status(400).json({ auth: false, message: "email exits" });
+		if (user) return res.status(400).json({ auth: false, message: "email exists" });
+		if (!req.body.password) return res.status(400).json({ success: false, message: "password required" });
 		newuser.setPassword(req.body.password);
 		newuser.save((err, doc) => {
 			if (err) {
