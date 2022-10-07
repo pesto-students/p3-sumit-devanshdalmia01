@@ -1,0 +1,18 @@
+login - email
+		password
+
+signup - email
+		 password x 2
+		 dob
+		 country
+
+1. signup with details then send verification email
+2. login with details and then store JWT 
+3. CRUD - Stocks
+		  FD
+		  Gold
+		  Mutual Fund
+		  Income - When Any Asset Is Sold It Will Show In Income
+		  Expenses - Add Any Expense - With Categories
+		  Savings - Cash
+				    Bank Account Balance

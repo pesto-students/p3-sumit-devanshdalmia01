@@ -1,0 +1,23 @@
+{
+  "name": "wealth-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Devansh Dalmia",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.1.1",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.5",
+    "nodemon": "^2.0.20",
+    "uuid": "^9.0.0"
+  }
+}

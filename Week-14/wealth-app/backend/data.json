@@ -1,0 +1,104 @@
+{
+	"user": {
+		"userId": "",
+		"email": "",
+		"password": "",
+		"isVerified": "",
+		"dob": "",
+		"country": ""
+	},
+	"assets": {
+		"userId": {
+			"stocks": [
+				{
+					"stockId": "",
+					"name": "",
+					"quantity": "",
+					"buyDate": "",
+					"buyPrice": "",
+					"sellDate": "",
+					"sellPrice": ""
+				}
+			],
+			"fixedDeposit": [
+				{
+					"fdId": "",
+					"name": "",
+					"startDate": "",
+					"principal": "",
+					"maturityDate": "",
+					"maturityAmount": ""
+				}
+			],
+			"gold": [
+				{
+					"goldId": "",
+					"name": "GOLD",
+					"quantityInGrams": "",
+					"buyDate": "",
+					"buyPricePerGram": "",
+					"sellDate": "",
+					"sellPricePerGram": ""
+				}
+			],
+			"mutualFund": [
+				{
+					"mfId": "",
+					"name": "",
+					"quantity": "",
+					"buyDate": "",
+					"buyNAV": "",
+					"sellDate": "",
+					"sellNAV": ""
+				}
+			],
+			"savings": {
+				"cash": "",
+				"bankAccountBalance": ""
+			}
+		}
+	},
+	"income": {
+		"userId": {
+			"stocks": [
+				{
+					"stockId": "",
+					"profitOrLoss": ""
+				}
+			],
+			"fixedDeposit": [
+				{
+					"fdId": "",
+					"profit": ""
+				}
+			],
+			"gold": [
+				{
+					"goldId": "",
+					"profitOrLoss": ""
+				}
+			],
+			"mutualFund": [
+				{
+					"mfId": "",
+					"profitOrLoss": ""
+				}
+			],
+			"savings": {
+				"cash": "",
+				"bankAccountBalance": ""
+			}
+		}
+	},
+	"expenses": {
+		"userId": [
+			{
+				"expenseId": "",
+				"description": "",
+				"amount": "",
+				"category": "",
+				"date": ""
+			}
+		]
+	}
+}
