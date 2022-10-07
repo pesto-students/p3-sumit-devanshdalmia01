@@ -1,8 +1,8 @@
-import user from "../models/user.js";
+import User from "../models/user.js";
 
 const auth = (req, res, next) => {
-	let token = req.cookies.auth;
-	user.findByToken(token, (err, user) => {
+	const token = req.cookies.auth;
+	User.findByToken(token, (err, user) => {
 		if (err) throw err;
 		if (!user)
 			return res.json({

@@ -3,6 +3,7 @@ import crypto from "crypto";
 import Jwt from "jsonwebtoken";
 import { get } from "../config/config.js";
 import { v4 } from "uuid";
+
 const userSchema = mongoose.Schema({
 	userId: {
 		type: String,
@@ -63,13 +64,13 @@ userSchema.methods.setPassword = function (password) {
 };
 
 userSchema.methods.validPassword = function (password) {
-	var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, `sha512`).toString(`hex`);
+	const hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, `sha512`).toString(`hex`);
 	return this.hash === hash;
 };
 
 userSchema.methods.generateToken = function (cb) {
-	var user = this;
-	var token = Jwt.sign(user._id.toHexString(), get(process.env.NODE_ENV).SECRET);
+	const user = this;
+	const token = Jwt.sign(user._id.toHexString(), get(process.env.NODE_ENV).SECRET);
 	user.token = token;
 	user.save(function (err, user) {
 		if (err) return cb(err);
@@ -78,7 +79,7 @@ userSchema.methods.generateToken = function (cb) {
 };
 
 userSchema.statics.findByToken = function (token, cb) {
-	var user = this;
+	const user = this;
 	Jwt.verify(token, get(process.env.NODE_ENV).SECRET, function (err, decode) {
 		user.findOne({ _id: decode, token: token }, function (err, user) {
 			if (err) return cb(err);
@@ -88,7 +89,7 @@ userSchema.statics.findByToken = function (token, cb) {
 };
 
 userSchema.methods.deleteToken = function (token, cb) {
-	var user = this;
+	const user = this;
 	user.update({ $unset: { token: 1 } }, function (err, user) {
 		if (err) return cb(err);
 		cb(null, user);
