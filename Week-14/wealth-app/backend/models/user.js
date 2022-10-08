@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import crypto from "crypto";
 import Jwt from "jsonwebtoken";
-import { v4 } from "uuid";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -11,7 +10,6 @@ const userSchema = mongoose.Schema({
 		type: String,
 		required: true,
 		unique: true,
-		default: v4(),
 	},
 	firstName: {
 		type: String,

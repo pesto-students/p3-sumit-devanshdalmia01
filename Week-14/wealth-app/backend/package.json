@@ -10,7 +10,6 @@
   "author": "Devansh Dalmia",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.1.1",
     "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.6",
     "country-to-currency": "^1.0.6",
@@ -19,7 +18,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.5",
     "nodemailer": "^6.8.0",
-    "nodemon": "^2.0.20",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
