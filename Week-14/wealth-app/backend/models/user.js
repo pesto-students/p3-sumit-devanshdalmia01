@@ -28,12 +28,26 @@ const userSchema = mongoose.Schema({
 	dob: {
 		type: Date,
 		required: true,
+		validate: {
+			validator: function (dob) {
+				const a = new Date(dob),
+					b = new Date();
+				const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+				const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+				const difference = Math.floor((utc2 - utc1) / (1000 * 60 * 60 * 24)) / 365;
+				if (difference > 18) {
+					return true;
+				} else {
+					return false;
+				}
+			},
+			message: (props) => `Age should be greater than 18`,
+		},
 	},
-	country: {
+	currency: {
 		type: String,
 		required: true,
-		trim: true,
-		maxlength: 100,
+		maxlength: 10,
 	},
 	email: {
 		type: String,
@@ -51,9 +65,15 @@ const userSchema = mongoose.Schema({
 		default: "",
 		required: true,
 	},
-	isVerified: {
-		type: Boolean,
-		required: false,
+	status: {
+		type: String,
+		enum: ["Pending", "Active"],
+		required: true,
+		default: "Pending",
+	},
+	confirmationToken: {
+		type: String,
+		unique: true,
 	},
 	token: {
 		type: String,

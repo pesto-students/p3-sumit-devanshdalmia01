@@ -1,7 +1,17 @@
 import User from "../models/user.js";
+import countryToCurrency from "country-to-currency";
+import Jwt from "jsonwebtoken";
+import { sendConfirmationEmail } from "../middlewares/auth.js";
 
 const register = async (req, res) => {
-	const newuser = new User(req.body);
+	const newuser = new User({
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		dob: req.body.dob,
+		currency: countryToCurrency[req.body.currency],
+		email: req.body.email,
+		confirmationToken: Jwt.sign(req.body.email, process.env.SECRET),
+	});
 	User.findOne({ email: newuser.email }, function (err, user) {
 		if (user) return res.status(400).json({ auth: false, message: "email exists" });
 		if (!req.body.password) return res.status(400).json({ success: false, message: "password required" });
@@ -14,8 +24,27 @@ const register = async (req, res) => {
 				success: true,
 				user: doc,
 			});
+			sendConfirmationEmail(newuser.firstName, newuser.email, newuser.confirmationToken);
 		});
 	});
+};
+
+const verify = async (req, res) => {
+	User.findOne({
+		confirmationToken: req.params.confirmationToken,
+	})
+		.then((user) => {
+			if (!user) {
+				return res.status(404).send({ message: "User Not found." });
+			}
+			user.status = "Active";
+			user.save((err) => {
+				if (err) {
+					return res.status(500).send({ message: err });
+				} else return res.status(200).send({ message: "user verified" });
+			});
+		})
+		.catch((e) => console.log("error", e));
 };
 
 const logIn = async (req, res) => {
@@ -34,6 +63,11 @@ const logIn = async (req, res) => {
 					return res.status(400).json({
 						stat: "error",
 						message: "Wrong Password",
+					});
+				} else if (user.status !== "Active") {
+					return res.status(401).send({
+						stat: "error",
+						message: "Pending Account. Please Verify Your Email!",
 					});
 				} else {
 					user.generateToken((err, user) => {
@@ -76,4 +110,4 @@ const isAuth = (req, res) => {
 	});
 };
 
-export { register, logIn, logOut, profile, isAuth };
+export { register, verify, logIn, logOut, profile, isAuth };
