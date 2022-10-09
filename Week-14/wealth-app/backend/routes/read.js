@@ -1,9 +1,9 @@
 import express from "express";
-import { createAsset } from "../controllers/create.js";
+import { readAsset } from "../controllers/read.js";
 import { auth } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/assets/:assetType", auth, createAsset);
+router.get("/assets/:assetType", auth, readAsset);
 
 export default router;

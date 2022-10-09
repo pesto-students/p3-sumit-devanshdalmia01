@@ -1,7 +1,7 @@
 import User from "../models/user.js";
 import countryToCurrency from "country-to-currency";
 import Jwt from "jsonwebtoken";
-import { sendConfirmationEmail } from "../middlewares/auth.js";
+import { sendEmail } from "../utils/mail.js";
 import { v4 } from "uuid";
 
 const register = async (req, res) => {
@@ -26,7 +26,7 @@ const register = async (req, res) => {
 				success: true,
 				user: doc,
 			});
-			sendConfirmationEmail(newuser.firstName, newuser.email, newuser.confirmationToken, "verificationEmail");
+			sendEmail(newuser.firstName, newuser.email, newuser.confirmationToken, "verificationEmail");
 		});
 	});
 };

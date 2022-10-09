@@ -1,6 +1,7 @@
 import { stocks, fd, gold, mf, assets } from "../models/assets.js";
-import { sendConfirmationEmail } from "../middlewares/auth.js";
+import { sendEmail } from "../utils/mail.js";
 import { v4 } from "uuid";
+import addAsset from "../utils/addAsset.js";
 
 const createAsset = async (req, res) => {
 	switch (req.params.assetType) {
@@ -20,32 +21,7 @@ const createAsset = async (req, res) => {
 						return res.status(400).json({ success: false, message: err.message });
 					}
 				});
-				if (asset) {
-					asset.stocks.push(newStock._id);
-					asset.save((err, doc) => {
-						// sendConfirmationEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
-						return res.status(200).json({
-							success: true,
-							data: asset,
-						});
-					});
-				} else {
-					const newAsset = new assets({
-						assetId: v4(),
-						userId: req.user._doc.userId,
-					});
-					newAsset.stocks.push(newStock._id);
-					newAsset.save((err, asset1) => {
-						if (err) {
-							return res.status(400).json({ success: false, message: err.message });
-						}
-						// sendConfirmationEmail(req.user._doc.firstName, req.user._doc.email, asset1, "asset");
-						return res.status(200).json({
-							success: true,
-							data: asset1,
-						});
-					});
-				}
+				addAsset(asset, req.params.assetType, newStock, req, res);
 			});
 			break;
 		case "fd":
@@ -63,32 +39,7 @@ const createAsset = async (req, res) => {
 						return res.status(400).json({ success: false, message: err.message });
 					}
 				});
-				if (asset) {
-					asset.fixedDeposit.push(newFd._id);
-					asset.save((err, doc) => {
-						// sendConfirmationEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
-						return res.status(200).json({
-							success: true,
-							data: asset,
-						});
-					});
-				} else {
-					const newAsset = new assets({
-						assetId: v4(),
-						userId: req.user._doc.userId,
-					});
-					newAsset.fixedDeposit.push(newFd._id);
-					newAsset.save((err, asset) => {
-						if (err) {
-							return res.status(400).json({ success: false, message: err.message });
-						}
-						// sendConfirmationEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
-						return res.status(200).json({
-							success: true,
-							data: asset,
-						});
-					});
-				}
+				addAsset(asset, req.params.assetType, newFd, req, res);
 			});
 			break;
 		case "gold":
@@ -107,32 +58,7 @@ const createAsset = async (req, res) => {
 						return res.status(400).json({ success: false, message: err.message });
 					}
 				});
-				if (asset) {
-					asset.gold.push(newGold._id);
-					asset.save((err, doc) => {
-						// sendConfirmationEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
-						return res.status(200).json({
-							success: true,
-							data: asset,
-						});
-					});
-				} else {
-					const newAsset = new assets({
-						assetId: v4(),
-						userId: req.user._doc.userId,
-					});
-					newAsset.gold.push(newGold._id);
-					newAsset.save((err, asset) => {
-						if (err) {
-							return res.status(400).json({ success: false, message: err.message });
-						}
-						// sendConfirmationEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
-						return res.status(200).json({
-							success: true,
-							data: asset,
-						});
-					});
-				}
+				addAsset(asset, req.params.assetType, newGold, req, res);
 			});
 			break;
 		case "mf":
@@ -151,32 +77,7 @@ const createAsset = async (req, res) => {
 						return res.status(400).json({ success: false, message: err.message });
 					}
 				});
-				if (asset) {
-					asset.mutualFund.push(newMF._id);
-					asset.save((err, doc) => {
-						// sendConfirmationEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
-						return res.status(200).json({
-							success: true,
-							data: asset,
-						});
-					});
-				} else {
-					const newAsset = new assets({
-						assetId: v4(),
-						userId: req.user._doc.userId,
-					});
-					newAsset.mutualFund.push(newMF._id);
-					newAsset.save((err, asset) => {
-						if (err) {
-							return res.status(400).json({ success: false, message: err.message });
-						}
-						// sendConfirmationEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
-						return res.status(200).json({
-							success: true,
-							data: asset,
-						});
-					});
-				}
+				addAsset(asset, req.params.assetType, newMF, req, res);
 			});
 			break;
 		case "savings":
@@ -185,7 +86,7 @@ const createAsset = async (req, res) => {
 					asset.cash = req.body?.cash;
 					asset.bankAccountBalance = req.body?.bankAccountBalance;
 					asset.save((err, doc) => {
-						// sendConfirmationEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
+						// sendEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
 						return res.status(200).json({
 							success: true,
 							data: asset,
@@ -202,7 +103,7 @@ const createAsset = async (req, res) => {
 						if (err) {
 							return res.status(400).json({ success: false, message: err.message });
 						}
-						// sendConfirmationEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
+						// sendEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
 						return res.status(200).json({
 							success: true,
 							data: asset,
