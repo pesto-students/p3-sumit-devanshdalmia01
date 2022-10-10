@@ -1,8 +1,8 @@
-3. CRUD - Stocks
-		  FD
-		  Gold
-		  Mutual Fund
-		  Income - When Any Asset Is Sold It Will Show In Income
-		  Expenses - Add Any Expense - With Categories
-		  Savings - Cash
-				    Bank Account Balance
+Remaining -
+1. 	Like assets, Create an api which returns Income , 
+	expenses and savings of logged in users in the current financial year.
+	Also api should filter results by financial year, or by month.
+2. 	Create an api which return the detailed breakdown of Income and Expenses of logged in user
+	Also api should filter results by financial year, or by month.
+3. 	Upload api, which can upload Invoice/bill or any pay slip.
+4. 	Send an email to the email of a logged in user when any Income
