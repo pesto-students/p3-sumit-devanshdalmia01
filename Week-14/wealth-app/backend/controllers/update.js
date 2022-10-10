@@ -1,6 +1,6 @@
 import { stocks, fd, gold, mf, assets } from "../models/assets.js";
 import expenses from "../models/expenses.js";
-import updateErrorChecker from "../utils/updateErrorChecker.js";
+import errorChecker from "../utils/errorChecker.js";
 
 const updateAsset = async (req, res) => {
 	switch (req.params.assetType) {
@@ -17,7 +17,7 @@ const updateAsset = async (req, res) => {
 						sellPrice: req.body?.sellPrice,
 					},
 				},
-				(err, doc) => updateErrorChecker(err, doc, res, "Stock not found!")
+				(err, doc) => errorChecker(err, doc, res, "Stock not found!")
 			);
 			break;
 		case "fd":
@@ -32,7 +32,7 @@ const updateAsset = async (req, res) => {
 						maturityAmount: req.body?.maturityAmount,
 					},
 				},
-				(err, doc) => updateErrorChecker(err, doc, res, "FD not found!")
+				(err, doc) => errorChecker(err, doc, res, "FD not found!")
 			);
 			break;
 		case "gold":
@@ -48,7 +48,7 @@ const updateAsset = async (req, res) => {
 						sellPricePerGram: req.body?.sellPricePerGram,
 					},
 				},
-				(err, doc) => updateErrorChecker(err, doc, res, "gold not found!")
+				(err, doc) => errorChecker(err, doc, res, "gold not found!")
 			);
 			break;
 		case "mf":
@@ -64,19 +64,19 @@ const updateAsset = async (req, res) => {
 						sellNAV: req.body?.sellNAV,
 					},
 				},
-				(err, doc) => updateErrorChecker(err, doc, res, "mf not found!")
+				(err, doc) => errorChecker(err, doc, res, "mf not found!")
 			);
 			break;
 		case "savings":
 			assets.updateOne(
-				{ _id: req.body._id },
+				{ userId: req.user._doc.userId },
 				{
 					$set: {
 						cash: req.body?.cash,
 						bankAccountBalance: req.body?.bankAccountBalance,
 					},
 				},
-				(err, doc) => updateErrorChecker(err, doc, res, "asset not found!")
+				(err, doc) => errorChecker(err, doc, res, "asset not found!")
 			);
 			break;
 	}
@@ -93,7 +93,7 @@ const updateExpense = async (req, res) => {
 				date: req.body?.date,
 			},
 		},
-		(err, doc) => updateErrorChecker(err, doc, res, "Expense not found!")
+		(err, doc) => errorChecker(err, doc, res, "Expense not found!")
 	);
 };
 

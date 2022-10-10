@@ -4,7 +4,7 @@ import { auth } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/assets/:assetType", auth, updateAsset);
-router.post("/expenses", auth, updateExpense);
+router.patch("/assets/:assetType", auth, updateAsset);
+router.patch("/expenses", auth, updateExpense);
 
 export default router;
