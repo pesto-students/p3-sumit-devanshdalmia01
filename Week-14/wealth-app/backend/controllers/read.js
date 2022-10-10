@@ -1,4 +1,5 @@
 import { stocks, fd, gold, mf, assets } from "../models/assets.js";
+import expenses from "../models/expenses.js";
 
 const readAsset = async (req, res) => {
 	if (req.params.assetType === "savings") {
@@ -59,4 +60,17 @@ const readAsset = async (req, res) => {
 	}
 };
 
-export { readAsset };
+const readExpense = async (req, res) => {
+	expenses.find({ userId: req.user._doc.userId }, async function (err, expenses) {
+		if (expenses.length) {
+			return res.status(200).json({
+				success: true,
+				data: expenses,
+			});
+		} else {
+			return res.status(404).json({ success: false, message: `This user does not have expenses!` });
+		}
+	});
+};
+
+export { readAsset, readExpense };

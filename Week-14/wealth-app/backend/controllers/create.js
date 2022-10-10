@@ -1,4 +1,5 @@
 import { stocks, fd, gold, mf, assets } from "../models/assets.js";
+import expenses from "../models/expenses.js";
 import { sendEmail } from "../utils/mail.js";
 import { v4 } from "uuid";
 import addAsset from "../utils/addAsset.js";
@@ -115,4 +116,26 @@ const createAsset = async (req, res) => {
 	}
 };
 
-export { createAsset };
+const createExpense = async (req, res) => {
+	const newExpense = new expenses({
+		expenseId: v4(),
+		userId: req.user._doc.userId,
+		description: req.body.description,
+		amount: req.body.amount,
+		category: req.body.category,
+		date: req.body.date,
+	});
+	newExpense.save((err, doc) => {
+		if (err) {
+			return res.status(400).json({ success: false, message: err.message });
+		} else {
+			// sendEmail(req.user._doc.firstName, req.user._doc.email, doc, "expense");
+			return res.status(200).json({
+				success: true,
+				data: doc,
+			});
+		}
+	});
+};
+
+export { createAsset, createExpense };
