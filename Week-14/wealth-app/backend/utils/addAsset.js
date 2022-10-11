@@ -1,14 +1,15 @@
 import { assets } from "../models/assets.js";
 import { sendEmail } from "./mail.js";
+import { v4 } from "uuid";
 
 export default function addAsset(asset, assetType, data, req, res) {
-	const type = {
-		stock: asset.stocks,
-		fd: asset.fixedDeposit,
-		gold: asset.gold,
-		mf: asset.mutualFund,
-	};
 	if (asset) {
+		const type = {
+			stock: asset.stocks,
+			fd: asset.fixedDeposit,
+			gold: asset.gold,
+			mf: asset.mutualFund,
+		};
 		type[assetType].push(data._id);
 		asset.save((err, doc) => {
 			sendEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");

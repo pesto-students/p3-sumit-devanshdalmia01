@@ -47,6 +47,18 @@ const sendEmail = (name, email, info, key) => {
 				})
 				.catch((err) => console.log(err));
 			break;
+		case "income":
+			transport
+				.sendMail({
+					from: process.env.EMAIL,
+					to: email,
+					subject: "An income has been added!",
+					html: `<h1>Income Added</h1>
+		  <h2>Hello ${name}</h2>
+		  <p>Thank you for adding an income.</p>`,
+				})
+				.catch((err) => console.log(err));
+			break;
 	}
 };
 

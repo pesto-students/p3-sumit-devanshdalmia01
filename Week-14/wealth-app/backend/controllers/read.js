@@ -1,5 +1,6 @@
 import { stocks, fd, gold, mf, assets } from "../models/assets.js";
 import expenses from "../models/expenses.js";
+import { incomeStocks, incomeFd, incomeGold, incomeMf, income } from "../models/income.js";
 
 const readAsset = async (req, res) => {
 	if (req.params.assetType === "savings") {
@@ -73,4 +74,6 @@ const readExpense = async (req, res) => {
 	});
 };
 
-export { readAsset, readExpense };
+const readIncome = async (req, res) => {};
+
+export { readAsset, readExpense, readIncome };

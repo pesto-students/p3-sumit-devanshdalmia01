@@ -1,8 +1,10 @@
 import { stocks, fd, gold, mf, assets } from "../models/assets.js";
 import expenses from "../models/expenses.js";
+import { incomeStocks, incomeFd, incomeGold, incomeMf, income } from "../models/income.js";
 import { sendEmail } from "../utils/mail.js";
 import { v4 } from "uuid";
 import addAsset from "../utils/addAsset.js";
+import addIncome from "../utils/addIncome.js";
 
 const createAsset = async (req, res) => {
 	switch (req.params.assetType) {
@@ -22,6 +24,21 @@ const createAsset = async (req, res) => {
 						return res.status(400).json({ success: false, message: err.message });
 					}
 				});
+				if (newStock.sellDate && newStock.sellPrice) {
+					const newIncomeStock = new incomeStocks({
+						stockId: newStock.stockId,
+						profitOrLoss: (newStock.sellPrice - newStock.buyPrice) * newStock.quantity,
+						date: newStock.sellDate,
+					});
+					newIncomeStock.save((err, doc) => {
+						if (err) {
+							return res.status(400).json({ success: false, message: err.message });
+						}
+					});
+					income.findOne({ userId: req.user._doc.userId }, function (err, income) {
+						addIncome(income, req.params.assetType, newIncomeStock, req, res);
+					});
+				}
 				addAsset(asset, req.params.assetType, newStock, req, res);
 			});
 			break;
@@ -40,6 +57,21 @@ const createAsset = async (req, res) => {
 						return res.status(400).json({ success: false, message: err.message });
 					}
 				});
+				if (newFd.maturityDate && newFd.maturityAmount) {
+					const newIncomeFD = new incomeFd({
+						fdId: newFd.fdId,
+						profit: newFd.maturityAmount - newFd.principal,
+						date: newFd.maturityDate,
+					});
+					newIncomeFD.save((err, doc) => {
+						if (err) {
+							return res.status(400).json({ success: false, message: err.message });
+						}
+					});
+					income.findOne({ userId: req.user._doc.userId }, function (err, income) {
+						addIncome(income, req.params.assetType, newIncomeFD, req, res);
+					});
+				}
 				addAsset(asset, req.params.assetType, newFd, req, res);
 			});
 			break;
@@ -59,6 +91,21 @@ const createAsset = async (req, res) => {
 						return res.status(400).json({ success: false, message: err.message });
 					}
 				});
+				if (newGold.sellDate && newGold.sellPricePerGram) {
+					const newIncomeGold = new incomeGold({
+						goldId: newGold.goldId,
+						profitOrLoss: (newGold.sellPricePerGram - newGold.buyPricePerGram) * newGold.quantityInGrams,
+						date: newGold.sellDate,
+					});
+					newIncomeGold.save((err, doc) => {
+						if (err) {
+							return res.status(400).json({ success: false, message: err.message });
+						}
+					});
+					income.findOne({ userId: req.user._doc.userId }, function (err, income) {
+						addIncome(income, req.params.assetType, newIncomeGold, req, res);
+					});
+				}
 				addAsset(asset, req.params.assetType, newGold, req, res);
 			});
 			break;
@@ -78,10 +125,50 @@ const createAsset = async (req, res) => {
 						return res.status(400).json({ success: false, message: err.message });
 					}
 				});
+				if (newMF.sellDate && newMF.sellNAV) {
+					const newIncomeMF = new incomeMf({
+						mfId: newMF.mfId,
+						profitOrLoss: (newMF.sellNAV - newMF.buyNAV) * newMF.quantity,
+						date: newMF.sellDate,
+					});
+					newIncomeMF.save((err, doc) => {
+						if (err) {
+							return res.status(400).json({ success: false, message: err.message });
+						}
+					});
+					income.findOne({ userId: req.user._doc.userId }, function (err, income) {
+						addIncome(income, req.params.assetType, newIncomeMF, req, res);
+					});
+				}
 				addAsset(asset, req.params.assetType, newMF, req, res);
 			});
 			break;
 		case "savings":
+			income.findOne({ userId: req.user._doc.userId }, function (err, income) {
+				if (income) {
+					income.cash = req.body?.cash;
+					income.bankAccountBalance = req.body?.bankAccountBalance;
+					income.save((err, doc) => {
+						if (err) {
+							return res.status(400).json({ success: false, message: err.message });
+						}
+						// sendEmail(req.user._doc.firstName, req.user._doc.email, oldIncome, "income");
+					});
+				} else {
+					const newIncome = new income({
+						incomeId: v4(),
+						userId: req.user._doc.userId,
+					});
+					newIncome.cash = req.body?.cash;
+					newIncome.bankAccountBalance = req.body?.bankAccountBalance;
+					newIncome.save((err, income) => {
+						if (err) {
+							return res.status(400).json({ success: false, message: err.message });
+						}
+						// sendEmail(req.user._doc.firstName, req.user._doc.email, income, "income");
+					});
+				}
+			});
 			assets.findOne({ userId: req.user._doc.userId }, function (err, asset) {
 				if (asset) {
 					asset.cash = req.body?.cash;
