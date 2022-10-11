@@ -5,4 +5,3 @@ Remaining -
 2. 	Create an api which return the detailed breakdown of Income and Expenses of logged in user
 	Also api should filter results by financial year, or by month.
 3. 	Upload api, which can upload Invoice/bill or any pay slip.
-4. 	Send an email to the email of a logged in user when any Income
