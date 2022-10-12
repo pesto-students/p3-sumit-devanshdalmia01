@@ -1,6 +1,6 @@
 import { stocks, fd, gold, mf, assets } from "../models/assets.js";
 import expenses from "../models/expenses.js";
-import { incomeStocks, incomeFd, incomeGold, incomeMf, income } from "../models/income.js";
+import readAllData from "../utils/readAllData.js";
 
 const readAsset = async (req, res) => {
 	if (req.params.assetType === "savings") {
@@ -74,6 +74,30 @@ const readExpense = async (req, res) => {
 	});
 };
 
-const readIncome = async (req, res) => {};
+const readIncome = async (req, res) => {
+	switch (req.params.timeFrame) {
+		case "current":
+			{
+				let startDate = new Date(`${new Date().getFullYear()}-04-01`);
+				let endDate = new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`);
+				readAllData(req, res, startDate, endDate);
+			}
+			break;
+		case "fy":
+			{
+				let startDate = new Date(`${req.body.start}-04-01`);
+				let endDate = new Date(`${req.body.end}-03-31`);
+				readAllData(req, res, startDate, endDate);
+			}
+			break;
+		case "month":
+			{
+				let startDate = new Date(req.body.start);
+				let endDate = new Date(req.body.end);
+				readAllData(req, res, startDate, endDate);
+			}
+			break;
+	}
+};
 
 export { readAsset, readExpense, readIncome };

@@ -152,7 +152,7 @@ const createAsset = async (req, res) => {
 						if (err) {
 							return res.status(400).json({ success: false, message: err.message });
 						}
-						// sendEmail(req.user._doc.firstName, req.user._doc.email, oldIncome, "income");
+						sendEmail(req.user._doc.firstName, req.user._doc.email, oldIncome, "income");
 					});
 				} else {
 					const newIncome = new income({
@@ -165,7 +165,7 @@ const createAsset = async (req, res) => {
 						if (err) {
 							return res.status(400).json({ success: false, message: err.message });
 						}
-						// sendEmail(req.user._doc.firstName, req.user._doc.email, income, "income");
+						sendEmail(req.user._doc.firstName, req.user._doc.email, income, "income");
 					});
 				}
 			});
@@ -174,7 +174,7 @@ const createAsset = async (req, res) => {
 					asset.cash = req.body?.cash;
 					asset.bankAccountBalance = req.body?.bankAccountBalance;
 					asset.save((err, doc) => {
-						// sendEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
+						sendEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
 						return res.status(200).json({
 							success: true,
 							data: asset,
@@ -191,7 +191,7 @@ const createAsset = async (req, res) => {
 						if (err) {
 							return res.status(400).json({ success: false, message: err.message });
 						}
-						// sendEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
+						sendEmail(req.user._doc.firstName, req.user._doc.email, asset, "asset");
 						return res.status(200).json({
 							success: true,
 							data: asset,
@@ -216,7 +216,7 @@ const createExpense = async (req, res) => {
 		if (err) {
 			return res.status(400).json({ success: false, message: err.message });
 		} else {
-			// sendEmail(req.user._doc.firstName, req.user._doc.email, doc, "expense");
+			sendEmail(req.user._doc.firstName, req.user._doc.email, doc, "expense");
 			return res.status(200).json({
 				success: true,
 				data: doc,

@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.get("/assets/:assetType", auth, readAsset);
 router.get("/expenses", auth, readExpense);
-router.get("/income", auth, readIncome);
+router.get("/income/:timeFrame", auth, readIncome);
 
 export default router;

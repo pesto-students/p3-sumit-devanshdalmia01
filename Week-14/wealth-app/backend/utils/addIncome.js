@@ -15,7 +15,7 @@ export default function addIncome(oldIncome, assetType, data, req, res) {
 			if (err) {
 				return res.status(400).json({ success: false, message: err.message });
 			}
-			// sendEmail(req.user._doc.firstName, req.user._doc.email, oldIncome, "income");
+			sendEmail(req.user._doc.firstName, req.user._doc.email, oldIncome, "income");
 		});
 	} else {
 		const newIncome = new income({
@@ -33,7 +33,7 @@ export default function addIncome(oldIncome, assetType, data, req, res) {
 			if (err) {
 				return res.status(400).json({ success: false, message: err.message });
 			}
-			// sendEmail(req.user._doc.firstName, req.user._doc.email, income1, "income");
+			sendEmail(req.user._doc.firstName, req.user._doc.email, income1, "income");
 		});
 	}
 }

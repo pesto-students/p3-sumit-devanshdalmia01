@@ -7,6 +7,7 @@ const auth = (req, res, next) => {
 		if (!user)
 			return res.status(403).json({
 				error: true,
+				message: "Please login again!",
 			});
 		req.token = token;
 		req.user = user;
