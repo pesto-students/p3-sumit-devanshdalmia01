@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Exercise 2.1</title>
+		<meta name="description" content="This is my solution to assignment Exercise 2.1" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Lorem ipsum dolor sit amet</h1>
+		</header>
+		<main>
+			<section class="firstsection">
+				<section class="one">
+					<article>
+						<p>
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati in laborum, doloribus quibusdam sequi maiores voluptatibus velit excepturi expedita a sunt molestiae hic
+							neque ducimus tenetur esse praesentium assumenda commodi ad. Nam cumque dignissimos accusamus blanditiis possimus non assumenda corporis?
+						</p>
+						<figure>
+							<img src="image.jpg" alt="This is an image from my Exercise 2.2" width="250px" height="250px" />
+							<figcaption>This is an image from my Exercise 2.2</figcaption>
+						</figure>
+					</article>
+				</section>
+				<section class="two">
+					<article>
+						<h1>Heading 1 - The Beginning</h1>
+						<p>
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti magnam saepe earum facere asperiores omnis, ea dignissimos officiis aliquam quas eligendi id vel cum
+							animi alias minima accusantium doloremque reiciendis officia quis deserunt! Harum pariatur non porro, dolores dolor est qui! Cumque quo nulla distinctio.
+							<a href="https://kiranaforhome.netlify.app" target="_blank" rel="noopener noreferrer">Read More</a>
+						</p>
+					</article>
+					<article>
+						<h1>Heading 2 - The Middle</h1>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, ut. Sapiente hic expedita autem enim iure doloremque obcaecati similique alias animi harum, rerum praesentium
+							consequatur odit voluptas repudiandae et delectus qui eius impedit incidunt, fugit voluptatem ad repellendus. Tempora molestias ea ratione obcaecati quas aperiam cupiditate
+							unde laboriosam velit veritatis. <a href="https://spaceonova.com" target="_blank" rel="noopener noreferrer">Read More</a>
+						</p>
+					</article>
+					<article>
+						<h1>Heading 3 - The End</h1>
+						<p>
+							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo harum accusantium provident, fugit officia cumque modi iste non numquam magni ipsa asperiores alias quibusdam
+							officiis iusto aut voluptate? Dolor harum saepe quas, neque eaque voluptate. <a href="https://servicebay.tech" target="_blank" rel="noopener noreferrer">Read More</a>
+						</p>
+					</article>
+				</section>
+			</section>
+			<section class="secondsection">
+				<article class="item1">
+					<h1>Heading 1 - The Beginning</h1>
+					<p>
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti magnam saepe earum facere asperiores omnis, ea dignissimos officiis aliquam quas eligendi id vel cum animi
+						alias minima accusantium doloremque reiciendis officia quis deserunt! Harum pariatur non porro, dolores dolor est qui! Cumque quo nulla distinctio.
+						<a href="https://kiranaforhome.netlify.app" target="_blank" rel="noopener noreferrer">Read More</a>
+					</p>
+				</article>
+				<article class="item2">
+					<h1>Heading 2 - The Middle</h1>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, ut. Sapiente hic expedita autem enim iure doloremque obcaecati similique alias animi harum, rerum praesentium
+						consequatur odit voluptas repudiandae et delectus qui eius impedit incidunt, fugit voluptatem ad repellendus. Tempora molestias ea ratione obcaecati quas aperiam cupiditate
+						unde laboriosam velit veritatis. <a href="https://spaceonova.com" target="_blank" rel="noopener noreferrer">Read More</a>
+					</p>
+				</article>
+				<article class="item3">
+					<h1>Heading 3 - The End</h1>
+					<p>
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo harum accusantium provident, fugit officia cumque modi iste non numquam magni ipsa asperiores alias quibusdam
+						officiis iusto aut voluptate? Dolor harum saepe quas, neque eaque voluptate. <a href="https://servicebay.tech" target="_blank" rel="noopener noreferrer">Read More</a>
+					</p>
+				</article>
+			</section>
+			<section class="thirdsection">
+				<h1>Register Yourself Here</h1>
+				<form action="" onsubmit="alert('Successfully Submitted')" method="post">
+					<fieldset style="border: none; padding: 0; margin: 0">
+						<legend style="display: none">Registration Details</legend>
+						<p>
+							<input type="radio" name="for_salutation" id="mr" />
+							<label for="mr">Mr.</label>
+							<input type="radio" name="for_salutation" id="ms" />
+							<label for="ms">Ms.</label>
+						</p>
+						<p>
+							<label for="name">Name</label>
+							<input type="text" name="" required title="Please enter your name!" id="name" />
+						</p>
+						<p>
+							<label for="email">Email</label>
+							<input type="email" name="" required title="Please enter your email!" id="email" />
+						</p>
+						<p>
+							<label for="mobileNumber">Mobile</label>
+							<input type="text" pattern="[6789][0-9]{9}" maxlength="10" name="" required title="Please enter a valid phone number!" id="mobileNumber" />
+						</p>
+						<p>
+							<label for="pass">Password</label>
+							<input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" name="" required title="Please enter a strong password!" id="pass" />
+						</p>
+						<p>
+							<label for="country"></label>
+							<select name="" required title="Please select a country!" id="country">
+								<option value="India" selected>India</option>
+								<option value="USA">USA</option>
+								<option value="UK">UK</option>
+							</select>
+						</p>
+						<p>
+							<input type="checkbox" name="" required title="Please check the field!" id="tnc" />
+							<label for="tnc">I accept the TnC</label>
+						</p>
+					</fieldset>
+					<button type="submit" class="mybutton">Submit</button>
+				</form>
+			</section>
+		</main>
+		<footer>
+			<div>
+				<h1>About Me</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit perspiciatis officiis, voluptatem iure quas! Neque ad possimus nostrum quas.</p>
+			</div>
+			<nav>
+				<ol>
+					<li><a href="https://kiranaforhome.netlify.app" target="_blank" rel="noopener noreferrer">Home</a></li>
+					<li><a href="https://spaceonova.com" target="_blank" rel="noopener noreferrer">More About Me</a></li>
+					<li><a href="https://servicebay.tech" target="_blank" rel="noopener noreferrer">FAQs</a></li>
+				</ol>
+			</nav>
+		</footer>
+	</body>
+</html>

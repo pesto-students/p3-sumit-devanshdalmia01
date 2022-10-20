@@ -1,0 +1,88 @@
+body {
+	display: flex;
+	justify-content: center;
+	margin: 200px 0px 200px 0px;
+}
+.square {
+	height: 100px;
+	width: 100px;
+}
+.main {
+	display: flex;
+	justify-content: center;
+}
+.main:hover .sq1 {
+	animation: red 2.5s normal;
+}
+.main:hover .sq2 {
+	animation: yellow 2.5s normal;
+}
+.main:hover .sq3 {
+	animation: green 2.5s normal;
+}
+.main:hover .sq4 {
+	animation: blue 2.5s normal;
+}
+@keyframes red {
+	0% {
+		transform: rotate(00deg);
+		transform-origin: top left;
+	}
+	50% {
+		transform: rotate(90deg);
+		transform-origin: top left;
+	}
+	100% {
+		transform: rotate(00deg);
+		transform-origin: top left;
+	}
+}
+@keyframes yellow {
+	0% {
+		transform: rotate(00deg);
+		transform-origin: top right;
+	}
+	50% {
+		transform: rotate(-90deg);
+		transform-origin: top right;
+	}
+	100% {
+		transform: rotate(00deg);
+		transform-origin: top right;
+	}
+}
+@keyframes green {
+	0% {
+		transform: rotate(00deg);
+		transform-origin: bottom right;
+	}
+	50% {
+		transform: rotate(90deg);
+		transform-origin: bottom right;
+	}
+	100% {
+		transform: rotate(00deg);
+		transform-origin: bottom right;
+	}
+}
+@keyframes blue {
+	0% {
+		transform: rotate(00deg);
+		transform-origin: bottom left;
+	}
+	50% {
+		transform: rotate(-90deg);
+		transform-origin: bottom left;
+	}
+	100% {
+		transform: rotate(00deg);
+		transform-origin: bottom left;
+	}
+}
+.hi {
+	position: absolute;
+	top: 36%;
+	left: 48.75%;
+	font-size: 30px;
+	z-index: -1;
+}
